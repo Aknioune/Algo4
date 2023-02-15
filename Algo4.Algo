@@ -1,0 +1,33 @@
+Algorithm DotProduct;
+
+variable
+   
+  vector = array of Integer;
+
+procedure dot_product(var v1, v2: vector; var ps: Integer);
+var
+  i: Integer;
+begin
+  ps := 0;
+  for i := 0 to Length(v1) - 1 do
+  begin
+    ps := ps + (v1[i] * v2[i]);
+  end;
+end;
+
+procedure is_orthogonal(var vectors: array of vector);
+var
+  i, ps: Integer;
+  v1, v2: vector;
+begin
+  for i := 0 to Length(vectors) - 1 do
+  begin
+    v1 := vectors[i][0];
+    v2 := vectors[i][1];
+    dot_product(v1, v2, ps);
+    if ps = 0 then
+      writeln('The vectors are orthogonal')
+    else
+      writeln('The vectors are not orthogonal');
+  end;
+end;
